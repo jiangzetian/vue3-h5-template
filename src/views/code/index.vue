@@ -1,7 +1,18 @@
 <template>
-  <h1>code</h1>
+  <div>
+    {{ code }}
+  </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const route = useRoute()
+const code = ref<string>('')
+
+onMounted(() => {
+  if (route.params?.code) {
+    code.value = route.params.code as string
+  }
+})
+</script>
 
 <style scoped></style>
